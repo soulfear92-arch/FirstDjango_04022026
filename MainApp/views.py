@@ -1,7 +1,5 @@
-from django.shortcuts import render
 from django.http import HttpResponse
-
-# Create your views here.
+from .data import user_info
 
 def home(request):
     text = """
@@ -10,10 +8,7 @@ def home(request):
     """
     return HttpResponse(text)
 
-from .data import user_info
-
-def user_info(request):
-    # Формируем текст, например, через join
+def about_view(request):
     text_lines = [f"{key}: {value}" for key, value in user_info.items()]
     text = "\n".join(text_lines)
-    return HttpResponse(text)
+    return HttpResponse(text, content_type="text/plain; charset=utf-8")
