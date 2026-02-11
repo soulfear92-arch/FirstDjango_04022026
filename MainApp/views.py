@@ -31,6 +31,13 @@ def item_view(request, id):
 def items_view(request):
     html_list = "<ol>"
     for item in items:
-        html_list += f"<li>{item['name']}</li>"
+        html_list += f'<li><a href="/items/{item["id"]}/">{item["name"]}</a></li>'
     html_list += "</ol>"
     return HttpResponse(html_list)
+
+def item_detail_view(request, item_id):
+    item = next((item for item in items if item["id"] == item_id), None)
+    if item:
+        return HttpResponse(f"<h1>{item['name']}</h1>")
+    else:
+        return HttpResponse("<h1>Товар не найден</h1>", status=404)
