@@ -14,20 +14,25 @@ def about_view(request):
     return HttpResponse(text, content_type="text/plain; charset=utf-8")
 
 items = [
-   {"id": 1, "name": "Кроссовки abibas"},
-   {"id": 2, "name": "Куртка кожаная"},
-   {"id": 3, "name": "Coca-cola 1 литр"},
-   {"id": 4, "name": "Картофель фри"},
-   {"id": 5, "name": "Кепка"},
+   {"id": 1, "name": "Кроссовки abibas","quantity": 30},
+   {"id": 2, "name": "Куртка кожаная","quantity": 20},
+   {"id": 3, "name": "Coca-cola 1 литр","quantity": 0},
+   {"id": 4, "name": "Картофель фри","quantity": 100},
+   {"id": 5, "name": "Кепка","quantity": 25},
 ]
 
-def item_view(request, id):
-    product = next((item for item in items if item["id"] == id), None)
-    if product:
-        return HttpResponse(product["name"])
-    else:
-        return HttpResponse(f"Товар с id={id} не найден")
-    
+   
+def item_view(reguest, id):
+    for item in items:
+        if item["id"] == id:
+            result = f"""
+            <h1> Имя: {item["name"]} </h1>
+            <p> Количество: {item["quantity"]} </p>
+            """
+            return HttpResponse(result)
+        else:
+            return HttpResponse(f"Товар с id={id} не найден")
+
 def items_view(request):
     html_list = "<ol>"
     for item in items:
@@ -38,6 +43,16 @@ def items_view(request):
 def item_detail_view(request, item_id):
     item = next((item for item in items if item["id"] == item_id), None)
     if item:
-        return HttpResponse(f"<h1>{item['name']}</h1>")
+        text = f"""
+        <h1>{item['name']}</h1>
+        <p> Количество: {item["quantity"]} </p>
+        <a href='/items/'>← Назад к списку товаров</a>
+        """
+        return HttpResponse(text)
     else:
-        return HttpResponse("<h1>Товар не найден</h1>", status=404)
+        text = """
+        <h1>Товар не найден</h1>
+        <p> Количество: {item["quantity"]} </p>
+        <a href='/items/'>← Назад к списку товаров</a>
+        """
+        return HttpResponse(text, status=404)
