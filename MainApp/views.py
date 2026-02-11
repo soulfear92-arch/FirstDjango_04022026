@@ -9,3 +9,11 @@ def home(request):
     <strong>Автор</strong>: <i>Kart G.V.</i>
     """
     return HttpResponse(text)
+
+from .data import user_info
+
+def about_view(request):
+    # Формируем текст, например, через join
+    text_lines = [f"{key}: {value}" for key, value in user_info.items()]
+    text = "\n".join(text_lines)
+    return HttpResponse(text)
