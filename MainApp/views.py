@@ -12,7 +12,7 @@ def home(request):
 
 from .data import user_info
 
-def about_view(request):
+def user_info(request):
     # Формируем текст, например, через join
     text_lines = [f"{key}: {value}" for key, value in user_info.items()]
     text = "\n".join(text_lines)
