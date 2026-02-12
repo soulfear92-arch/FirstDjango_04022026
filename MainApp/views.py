@@ -7,9 +7,6 @@ from .data import user_info
 def home(request) -> HttpResponse:
     context = {
         "name": "Георгий",
-        "middle_name": "Викторович",
-        "last_name": "Картомышев",
-        "phone": "8-909-909-99-99",
         "email": "soulfear92@gmail.com",
     }
     return render(request, 'index.html', context)
@@ -28,15 +25,20 @@ items = [
    {"id": 5, "name": "Кепка","quantity": 25},
 ]
 
-def item_view(request, id):
-    for item in items:
-        if item["id"] == id:
-            result = f"""
-            <h1> Имя: {item["name"]} </h1>
-            <p> Количество: {item["quantity"]} </p>
-            """
-            return HttpResponse(result)
-    return HttpResponse(f"Товар с id={id} не найден")
+def item_view(request, id): 
+    for item in items: 
+        if item["id"] == id: 
+            return render(request, 'item.html', {'item': item})
+
+
+#def item_view(request, id):
+#    for item in items:
+#        if item["id"] == id:
+#            result = f"""
+#            <h1> Имя: {item["name"]} </h1>
+#            <p> Количество: {item["quantity"]} </p>
+#            """
+#            return render(request,'item.html',{'result':result})
 
 def items_view(request):
     html_list = "<ol>"
