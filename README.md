@@ -17,3 +17,13 @@ pip install -r requirements.txt
 4. запуск сервера
 
 python manage.py runserver
+
+##Доп
+
+Расширение шаблонов: Django
+
+ext install batisteo.vccode-django
+
+Добавить в settings.json
+    "emmet.includeLanguages": {"django-html": "html"},
+    "files.associations": {"*.html":"django-html"}

@@ -3,14 +3,22 @@ from django.http import HttpResponse
 from .data import user_info
 
 
-def home(request):
-    return render(request, 'index.html')
+
+def home(request) -> HttpResponse:
+    context = {
+        "name": "Георгий",
+        "middle_name": "Викторович",
+        "last_name": "Картомышев",
+        "phone": "8-909-909-99-99",
+        "email": "soulfear92@gmail.com",
+    }
+    return render(request, 'index.html', context)
 
 
 def about_view(request):
     text_lines = [f"{key}: {value}" for key, value in user_info.items()]
     text = "\n".join(text_lines)
-    return HttpResponse(text, content_type="text/plain; charset=utf-8")
+    return render(request, 'about.html', user_info)
 
 items = [
    {"id": 1, "name": "Кроссовки abibas","quantity": 30},
@@ -20,7 +28,6 @@ items = [
    {"id": 5, "name": "Кепка","quantity": 25},
 ]
 
-   
 def item_view(request, id):
     for item in items:
         if item["id"] == id:
