@@ -2,12 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .data import user_info
 
+
 def home(request):
-    text = """
-    <h1>"Изучаем django"</h1>
-    <strong>Автор</strong>: <i>Kart G.V.</i>
-    """
-    return HttpResponse(text)
+    return render(request, 'index.html')
+
 
 def about_view(request):
     text_lines = [f"{key}: {value}" for key, value in user_info.items()]
