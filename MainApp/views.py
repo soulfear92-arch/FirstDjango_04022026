@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.http import HttpResponse
 from .data import user_info
 
@@ -22,7 +23,7 @@ items = [
 ]
 
    
-def item_view(reguest, id):
+def item_view(request, id):
     for item in items:
         if item["id"] == id:
             result = f"""
@@ -30,8 +31,7 @@ def item_view(reguest, id):
             <p> Количество: {item["quantity"]} </p>
             """
             return HttpResponse(result)
-        else:
-            return HttpResponse(f"Товар с id={id} не найден")
+    return HttpResponse(f"Товар с id={id} не найден")
 
 def items_view(request):
     html_list = "<ol>"
@@ -52,7 +52,6 @@ def item_detail_view(request, item_id):
     else:
         text = """
         <h1>Товар не найден</h1>
-        <p> Количество: {item["quantity"]} </p>
         <a href='/items/'>← Назад к списку товаров</a>
         """
         return HttpResponse(text, status=404)
