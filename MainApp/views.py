@@ -40,8 +40,8 @@ def items_view(request):
     html_list += "</ol>"
     return HttpResponse(html_list)
 
-def item_detail_view(request, id):
-    item = next((item for item in items if item["id"] == id), None)
+def item_detail_view(request, item_id):
+    item = next((item for item in items if item["id"] == item_id), None)
     if item:
         text = f"""
         <h1>{item['name']}</h1>
