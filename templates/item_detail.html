@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {{ item.name }} </title>
+</head>
+<body>
+ {% if item %}
+        <h1>{{ item.name }}</h1>
+        <p>Описание: {{ item.name }}</p>
+        <p>Количество: {% if item.quantity == 0 %}товар отсутствует{% else %}{{ item.quantity }}{% endif %}.</p>
+        <a href="/items/">← Назад к списку товаров</a>
+    {% else %}
+        <h1>Товар не найден</h1>
+        <a href="/items/">← Назад к списку товаров</a>
+    {% endif %}
+</body>
+</html>

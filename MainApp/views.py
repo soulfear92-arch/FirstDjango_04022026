@@ -35,34 +35,18 @@ def item_view(request, id):
     return HttpResponse(text, status=404)
 
 
-#def item_view(request, id):
-#    for item in items:
-#        if item["id"] == id:
-#            result = f"""
-#            <h1> Имя: {item["name"]} </h1>
-#            <p> Количество: {item["quantity"]} </p>
-#            """
-#            return render(request,'item.html',{'result':result})
-
 def items_view(request):
-    html_list = "<ol>"
-    for item in items:
-        html_list += f'<li><a href="/items/{item["id"]}/">{item["name"]}</a></li>'
-    html_list += "</ol>"
-    return HttpResponse(html_list)
+    return render(request, 'items.html', {'items': items})
+#def items_view(request):
+#    html_list = "<ol>"
+#    for item in items:
+#        html_list += f'<li><a href="/items/{item["id"]}/">{item["name"]}</a></li>'
+#    html_list += "</ol>"
+#    return render(request, 'items.html', {'items':items})
 
 def item_detail_view(request, item_id):
-    item = next((item for item in items if item["id"] == item_id), None)
+    item = next((item for item in items if item["id"] == item_id), None)  
     if item:
-        text = f"""
-        <h1>{item['name']}</h1>
-        <p> Количество: {item["quantity"]} </p>
-        <a href='/items/'>← Назад к списку товаров</a>
-        """
-        return HttpResponse(text)
+        return render(request, 'item_detail.html', {'item': item})
     else:
-        text = """
-        <h1>Товар не найден</h1>
-        <a href='/items/'>← Назад к списку товаров</a>
-        """
-        return HttpResponse(text, status=404)
+        return render(request, 'item_detail.html', {'item': None})
