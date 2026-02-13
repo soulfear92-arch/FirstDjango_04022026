@@ -26,9 +26,13 @@ items = [
 ]
 
 def item_view(request, id): 
+    text = f"""
+    <h1>Товар не найден</h1>
+"""
     for item in items: 
         if item["id"] == id: 
             return render(request, 'item.html', {'item': item})
+    return HttpResponse(text, status=404)
 
 
 #def item_view(request, id):

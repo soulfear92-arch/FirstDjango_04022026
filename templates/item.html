@@ -6,13 +6,13 @@
     <title>Item</title>
 </head>
 <body>
-    <h1> Информация о товар </h1>
+    <h1> Информация о товаре </h1>
 
 
 <h1>Имя: {{ item.name }}</h1><br>  
 <p>Количество: {{ item.quantity }}</p><br> 
 
-<p><a href="{% url 'items' %}">Вернуться к списку товаров</a></p>
+<p><a href="{% url 'item' id=item.id %}"></p>
 
 
 </body>
