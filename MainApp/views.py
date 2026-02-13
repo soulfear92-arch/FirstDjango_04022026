@@ -26,14 +26,10 @@ items = [
 ]
 
 def item_view(request, id): 
-    text = f"""
-    <h1>Товар не найден</h1>
-"""
     for item in items: 
         if item["id"] == id: 
             return render(request, 'item.html', {'item': item})
-    return HttpResponse(text, status=404)
-
+    return render(request, 'errors.html', {'errors': [f'Товар с кодом id={id} не найден']})
 
 def items_view(request):
     return render(request, 'items.html', {'items': items})
@@ -47,6 +43,6 @@ def items_view(request):
 def item_detail_view(request, item_id):
     item = next((item for item in items if item["id"] == item_id), None)  
     if item:
-        return render(request, 'item_detail.html', {'item': item})
+        return render(request, 'item.html', {'item': item})
     else:
-        return render(request, 'item_detail.html', {'item': None})
+        return render(request, 'errors.html', {'errors': [f'Товар с кодом id={item_id} не найден']})

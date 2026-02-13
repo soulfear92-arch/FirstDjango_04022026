@@ -6,13 +6,15 @@
     <title> Информация о товаре </title>
 </head>
 <body>
-   <ol>
+        <header>
+        / <a href="/">Home</a> / <a href="/about">about</a> / <a href="/items">items</a></p>
+    </header>
     <h1>Список товаров</h1>
+    
     <ol>
         {% for item in items %}
-            <li><a href="/items/{{ item.id }}/">{{ item.name }}</a></li>
+            <li><a href="/item/{{ item.id }}/">{{ item.name }}</a></li>
         {% endfor %}
     </ol>
-    <a href="/">← Назад на главную</a>
 </body>
 </html>
