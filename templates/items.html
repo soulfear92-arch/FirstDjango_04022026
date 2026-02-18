@@ -11,10 +11,38 @@
     </header>
     <h1>Список товаров</h1>
     
-    <ol>
-        {% for item in items %}
-            <li><a href="/item/{{ item.id }}/">{{ item.name }}</a></li>
-        {% endfor %}
-    </ol>
+    <style>
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            width: 200px;
+            box-shadow: 1px 1px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        </style>
+        
+        <div class="card-container">
+            {% for item in items %}
+            <div class="card">
+                <h2>{{ item.name }}</h2>
+                <p><strong>Бренд:</strong> {{ item.brand }}</p>
+                <p>
+                    {% if item.count > 0 %}
+                        Количество: {{ item.count }}
+                    {% else %}
+                        <span style="color: red;">товара нет на складе</span>
+                    {% endif %}
+                </p>
+                <p>{{ item.description|default:"Описание товара отсутствует" }}</p>
+                <a href="{% url 'item_detail' item.id %}">Подробнее</a>
+            </div>
+            {% endfor %}
+        </div>
 </body>
 </html>

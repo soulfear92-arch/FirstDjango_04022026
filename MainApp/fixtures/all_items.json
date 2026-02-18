@@ -5,7 +5,8 @@
     "fields": {
         "name": "Куртка",
         "brand": "Adidas",
-        "count": 10
+        "count": 10,
+        "description": "Куртка кожанная из Италии"
     }
 },
 {
@@ -14,16 +15,18 @@
     "fields": {
         "name": "Шляпа",
         "brand": "Freeze",
-        "count": 7
+        "count": 7,
+        "description": "Шляпа Freeze из Эстонии"
     }
 },
 {
     "model": "MainApp.item",
     "pk": 3,
     "fields": {
-        "name": "Куртка",
+        "name": "Кросовки",
         "brand": "FreeSteel",
-        "count": 2
+        "count": 2,
+        "description": "Кросовки FreezeStyle из США"
     }
 },
 {
@@ -32,7 +35,8 @@
     "fields": {
         "name": "Газировка",
         "brand": "Coca-cola",
-        "count": 5
+        "count": 5,
+        "description": "Газировка Coca-cola из Индии"
     }
 },
 {
@@ -41,7 +45,8 @@
     "fields": {
         "name": "Чипсы",
         "brand": "estrella",
-        "count": 0
+        "count": 0,
+        "description": "Чипсы Estrella из Австралии"
     }
 }
 ]

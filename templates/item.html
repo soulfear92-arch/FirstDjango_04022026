@@ -10,9 +10,18 @@
         / <a href="/">Home</a> / <a href="/about">about</a> / <a href="/items">items</a></p>
     </header>
     <h1> Информация о товаре </h1>
+    <h1>Имя: {{ item.name }}</h1><br>  
+    <p><strong>Бренд:</strong> {{ item.brand }}</p>
+<p><strong>Количество на складе:</strong>
+    {% if item.count > 0 %}
+        {{ item.count }}
+    {% else %}
+        <span style="color: red;">товара нет на складе</span>
+    {% endif %}
+</p>
 
-        <h1>Имя: {{ item.name }}</h1><br>  
-        <p>Количество: {{ item.quantity }}</p><br>
+<h3>Описание</h3>
+<p>{{ item.description|default:"Описание товара отсутствует" }}</p>
         <p><a href="/items/">← Назад к списку товаров</a></p>
 
 </body>

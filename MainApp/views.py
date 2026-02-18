@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render#, get_object_or_404
 from django.http import HttpResponse
 from .data import user_info
+from .models import Item
 
 
 
@@ -17,21 +18,24 @@ def about_view(request):
     text = "\n".join(text_lines)
     return render(request, 'about.html', user_info)
 
-items = [
-   {"id": 1, "name": "Кроссовки abibas","quantity": 30},
-   {"id": 2, "name": "Куртка кожаная","quantity": 20},
-   {"id": 3, "name": "Coca-cola 1 литр","quantity": 0},
-   {"id": 4, "name": "Картофель фри","quantity": 100},
-   {"id": 5, "name": "Кепка","quantity": 25},
-]
+#items = [
+#   {"id": 1, "name": "Кроссовки abibas","quantity": 30},
+#   {"id": 2, "name": "Куртка кожаная","quantity": 20},
+#   {"id": 3, "name": "Coca-cola 1 литр","quantity": 0},
+#   {"id": 4, "name": "Картофель фри","quantity": 100},
+#   {"id": 5, "name": "Кепка","quantity": 25},
+#]
 
-def item_view(request, id): 
-    for item in items: 
-        if item["id"] == id: 
-            return render(request, 'item.html', {'item': item})
-    return render(request, 'errors.html', {'errors': [f'Товар с кодом id={id} не найден']})
+#def item_view(request, id): 
+#    """TODO: get item by id from db."""
+#    for item in items: 
+#        if item["id"] == id: 
+#            return render(request, 'item.html', {'item': item})
+#    return render(request, 'errors.html', {'errors': [f'Товар с кодом id={id} не найден']})
 
 def items_view(request):
+    """TODO: get all items from db."""
+    items = Item.objects.all()
     return render(request, 'items.html', {'items': items})
 #def items_view(request):
 #    html_list = "<ol>"
@@ -41,8 +45,13 @@ def items_view(request):
 #    return render(request, 'items.html', {'items':items})
 
 def item_detail_view(request, item_id):
-    item = next((item for item in items if item["id"] == item_id), None)  
-    if item:
-        return render(request, 'item.html', {'item': item})
-    else:
+    #item = get_object_or_404(Item, id=item_id)
+    try:
+        item = Item.objects.get(id=item_id)
+    except Item.DoesNotExist:
         return render(request, 'errors.html', {'errors': [f'Товар с кодом id={item_id} не найден']})
+    return render(request, 'item.html', {'item': item})
+    #item = next((item for item in items if item["id"] == item_id), None)  
+    #return render(request, 'item.html', {'item': item})
+    #else:
+    #    return render(request, 'errors.html', {'errors': [f'Товар с кодом id={item_id} не найден']})
