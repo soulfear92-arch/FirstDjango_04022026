@@ -14,9 +14,16 @@ source django_venv/bin/activate
 
 pip install -r requirements.txt
 
-4. запуск сервера
+4. Применить миграции
+python manage.py migrate
+
+5. запуск сервера
 
 python manage.py runserver
+
+##Запуск 'ipython' в контексте джанго приложений
+
+python manage.py shell_plus --ipython
 
 ##Доп
 
