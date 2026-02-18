@@ -25,6 +25,16 @@ python manage.py runserver
 
 python manage.py shell_plus --ipython
 
+##Выгрузка и загрузка данных при работе с БД
+### Выгрузка данных из БД
+
+python manage.py dumpdata MainApp --indent 4 > MainApp/fixtures/all_items.json
+
+
+###Загрузка данных
+
+python manage.py loaddata MainApp MainApp/fixtures/all_items.json
+
 ##Доп
 
 Расширение шаблонов: Django
