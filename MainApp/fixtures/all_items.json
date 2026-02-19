@@ -1,12 +1,30 @@
 [
 {
+    "model": "MainApp.color",
+    "pk": 1,
+    "fields": {
+        "name": "red"
+    }
+},
+{
+    "model": "MainApp.color",
+    "pk": 2,
+    "fields": {
+        "name": "green"
+    }
+},
+{
     "model": "MainApp.item",
     "pk": 1,
     "fields": {
         "name": "Куртка",
         "brand": "Adidas",
         "count": 10,
-        "description": "Куртка кожанная из Италии"
+        "description": "Куртка кожанная из Италии",
+        "colors": [
+            1,
+            2
+        ]
     }
 },
 {
@@ -16,7 +34,10 @@
         "name": "Шляпа",
         "brand": "Freeze",
         "count": 7,
-        "description": "Шляпа Freeze из Эстонии"
+        "description": "Шляпа Freeze из Эстонии",
+        "colors": [
+            1
+        ]
     }
 },
 {
@@ -26,7 +47,8 @@
         "name": "Кросовки",
         "brand": "FreeSteel",
         "count": 2,
-        "description": "Кросовки FreezeStyle из США"
+        "description": "Кросовки FreezeStyle из США",
+        "colors": []
     }
 },
 {
@@ -36,7 +58,8 @@
         "name": "Газировка",
         "brand": "Coca-cola",
         "count": 5,
-        "description": "Газировка Coca-cola из Индии"
+        "description": "Газировка Coca-cola из Индии",
+        "colors": []
     }
 },
 {
@@ -46,7 +69,8 @@
         "name": "Чипсы",
         "brand": "estrella",
         "count": 0,
-        "description": "Чипсы Estrella из Австралии"
+        "description": "Чипсы Estrella из Австралии",
+        "colors": []
     }
 }
 ]

@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item</title>
-</head>
-<body>
-        <header>
-        / <a href="/">Home</a> / <a href="/about">about</a> / <a href="/items">items</a></p>
-    </header>
+{% extends 'base.html' %}
+{% block title %} О товаре {% endblock %}
+
+{% block content %}
     <h1> Информация о товаре </h1>
     <h1>Имя: {{ item.name }}</h1><br>  
     <p><strong>Бренд:</strong> {{ item.brand }}</p>
@@ -22,7 +15,5 @@
 
 <h3>Описание</h3>
 <p>{{ item.description|default:"Описание товара отсутствует" }}</p>
-        <p><a href="/items/">← Назад к списку товаров</a></p>
-
-</body>
-</html>
+{% include "footer.html" %}
+        {% endblock %}
