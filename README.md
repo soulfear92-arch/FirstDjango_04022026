@@ -33,7 +33,7 @@ python manage.py dumpdata MainApp --indent 4 > MainApp/fixtures/all_items.json
 
 ###Загрузка данных
 
-python manage.py loaddata MainApp MainApp/fixtures/all_items.json
+python manage.py loaddata MainApp/fixtures/all_items.json
 
 ##Доп
 
