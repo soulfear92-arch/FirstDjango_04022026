@@ -50,7 +50,13 @@ def item_detail_view(request, item_id):
         item = Item.objects.get(id=item_id)
     except Item.DoesNotExist:
         return render(request, 'errors.html', {'errors': [f'Товар с кодом id={item_id} не найден']})
-    return render(request, 'item.html', {'item': item})
+    else:
+        colors = item.colors.all()
+        context = {
+            "item": item,
+            "colors": colors,
+        }
+    return render(request, 'item.html', context)
     #item = next((item for item in items if item["id"] == item_id), None)  
     #return render(request, 'item.html', {'item': item})
     #else:

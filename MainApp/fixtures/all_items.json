@@ -3,14 +3,24 @@
     "model": "MainApp.color",
     "pk": 1,
     "fields": {
-        "name": "red"
+        "name": "red",
+        "hhex_code": "#FF0000"
     }
 },
 {
     "model": "MainApp.color",
     "pk": 2,
     "fields": {
-        "name": "green"
+        "name": "green",
+        "hhex_code": "#00FF00"
+    }
+},
+{
+    "model": "MainApp.color",
+    "pk": 3,
+    "fields": {
+        "name": "black",
+        "hhex_code": "#000000"
     }
 },
 {
@@ -36,7 +46,9 @@
         "count": 7,
         "description": "Шляпа Freeze из Эстонии",
         "colors": [
-            1
+            1,
+            2,
+            3
         ]
     }
 },
@@ -48,7 +60,9 @@
         "brand": "FreeSteel",
         "count": 2,
         "description": "Кросовки FreezeStyle из США",
-        "colors": []
+        "colors": [
+            1
+        ]
     }
 },
 {
@@ -59,7 +73,9 @@
         "brand": "Coca-cola",
         "count": 5,
         "description": "Газировка Coca-cola из Индии",
-        "colors": []
+        "colors": [
+            2
+        ]
     }
 },
 {

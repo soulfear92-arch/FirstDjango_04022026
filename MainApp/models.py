@@ -2,9 +2,13 @@ from django.db import models
 
 class Color(models.Model):
     name = models.CharField(max_length=32)
+    hhex_code = models.CharField(max_length=7, default='#000000')
 
+    def __str__(self):
+        return self.name
+    
 def __repr__(self):
-    return f'Color(self.name)'
+    return f'Color({self.name})'
 
 class Item(models.Model):
     name = models.CharField(max_length=100)
@@ -12,6 +16,3 @@ class Item(models.Model):
     count = models.PositiveIntegerField()
     description = models.TextField(blank=True)
     colors = models.ManyToManyField(to=Color)
-
-def __str__(self):
-    return self.name

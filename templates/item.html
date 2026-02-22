@@ -15,5 +15,14 @@
 
 <h3>Описание</h3>
 <p>{{ item.description|default:"Описание товара отсутствует" }}</p>
+<h3>Цвета</h3>
+{% for color in colors %}
+<li>
+    <span style="display:inline-block; width:16px; height:16px; background-color: {{ color.hhex_code }}; margin-right:8px; vertical-align: middle;"></span>
+    {{ color.name }}
+</li>
+{% empty %}
+<p>Информация по цветам отсутствует</p>
+{% endfor %}
 {% include "footer.html" %}
-        {% endblock %}
+{% endblock %}
