@@ -18,7 +18,7 @@
 <h3>Цвета</h3>
 {% for color in colors %}
 <li>
-    <span style="display:inline-block; width:16px; height:16px; background-color: {{ color.hhex_code }}; margin-right:8px; vertical-align: middle;"></span>
+<span style="display:inline-block; width:16px; height:16px; background-color: {{ color.hex_code|default:'#000' }}; margin-right:8px; vertical-align:middle;"></span>
     {{ color.name }}
 </li>
 {% empty %}

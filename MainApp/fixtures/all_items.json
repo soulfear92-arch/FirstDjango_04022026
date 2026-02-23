@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
         "name": "red",
-        "hhex_code": "#FF0000"
+        "hex_code": "#FF0000"
     }
 },
 {
@@ -12,7 +12,7 @@
     "pk": 2,
     "fields": {
         "name": "green",
-        "hhex_code": "#00FF00"
+        "hex_code": "#00FF00"
     }
 },
 {
@@ -20,7 +20,7 @@
     "pk": 3,
     "fields": {
         "name": "black",
-        "hhex_code": "#000000"
+        "hex_code": "#000000"
     }
 },
 {
