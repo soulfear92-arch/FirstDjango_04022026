@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
 {% block title %} О товаре {% endblock %}
 
+{% block style %}
+
+<link rel="stylesheet" href="{% static 'css/color.css'%}">
+{% endblock %}
 {% block content %}
     <h1> Информация о товаре </h1>
     <h1>Имя: {{ item.name }}</h1><br>  
@@ -16,10 +23,10 @@
 <h3>Описание</h3>
 <p>{{ item.description|default:"Описание товара отсутствует" }}</p>
 <h3>Цвета</h3>
+<ul class='ul_no_mark'>
 {% for color in colors %}
 <li>
-<span style="display:inline-block; width:16px; height:16px; background-color: {{ color.hex_code|default:'#000' }}; margin-right:8px; vertical-align:middle;"></span>
-    {{ color.name }}
+<span class="color-box" style='background-color: {{color.name}};'></span> {{ color.name }}
 </li>
 {% empty %}
 <p>Информация по цветам отсутствует</p>
